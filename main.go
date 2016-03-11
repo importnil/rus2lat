@@ -1,4 +1,4 @@
-package main
+package rus2lat
 
 import (
 	"bytes"
@@ -100,9 +100,4 @@ func URL(o string) string {
 	}
 
 	return result.String()
-}
-
-func main() {
-	a:=URL(`fsdfd - fd`)
-	fmt.Println(a)
 }
