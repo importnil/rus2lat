@@ -10,7 +10,7 @@ go get -u github.com/vadimyer/rus2lat
 
 ##Usage
 
-There are only 2 functions: one is for raw text and another is for an URL transformation. Both return string values.
+There are only 2 methods: one is for raw text and another is for an URL transformation. Both return string values.
 
 ```
 rus2lat.Raw("Привет, я Вася!") // Privet, ya Vasya!
@@ -27,8 +27,8 @@ rus2lat.URL("Привет, я Вася!") // privet-ya-vasya
 
 #####Results
 ```
-BenchmarkRaw-8   1000000              1426 ns/op             148 B/op          6 allocs/op
-BenchmarkURL-8   1000000              1361 ns/op             128 B/op          2 allocs/op
+BenchmarkRaw-8   1000000              1451 ns/op             148 B/op          6 allocs/op
+BenchmarkURL-8   1000000              1175 ns/op             128 B/op          2 allocs/op
 ```
 
 Text used: Привет, я Вася!

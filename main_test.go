@@ -1,4 +1,4 @@
-package rus2lat
+package main
 
 import (
 	"testing"

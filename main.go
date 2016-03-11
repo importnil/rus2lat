@@ -1,10 +1,11 @@
-package rus2lat
+package main
 
 import (
 	"bytes"
 	"strings"
 	"unicode"
 	"unicode/utf8"
+	"fmt"
 )
 
 var (
@@ -80,12 +81,12 @@ func URL(o string) string {
 		switch char, _ := charsMap[unicode.ToLower(v)]; {
 		case unicode.IsDigit(v):
 			result.WriteRune(v)
-		case v == '_' || v == '~':
+		case v == '_' || v == '~' || (v == '-' && !unicode.IsSpace(runeString[i+1])):
 			result.WriteRune(v)
 		case v == 'ъ' || v == 'ь':
 			continue
 		case unicode.IsSpace(v):
-			if len > i+1 && runeString[i+1] == ' ' {
+			if len > i+1 && runeString[i+1] != '-' || unicode.IsSpace(runeString[i+1]) {
 				i++
 				continue
 			}
@@ -99,4 +100,9 @@ func URL(o string) string {
 	}
 
 	return result.String()
+}
+
+func main() {
+	a:=URL(`fsdfd - fd`)
+	fmt.Println(a)
 }
