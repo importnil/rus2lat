@@ -78,19 +78,16 @@ func URL(o string) string {
 		switch char, _ := charsMap[unicode.ToLower(v)]; {
 		case unicode.IsDigit(v):
 			result.WriteRune(v)
-		case v == '_' || v == '~' || (v == '-' && !unicode.IsSpace(runeString[i+1])):
+		case v == '_' || v == '~':
 			result.WriteRune(v)
-		case v == 'ъ' || v == 'ь':
+		case v == 'ъ' || v == 'ь' || v == 'Ъ' || v == 'Ь':
 			continue
-		case unicode.IsSpace(v):
-			if len > i+1 && runeString[i+1] != '-' || unicode.IsSpace(runeString[i+1]) {
-				i++
-				continue
-			}
-
-			result.WriteString("-")
 		case 'a' <= v && v <= 'z' || 'A' <= v && v <= 'Z':
 			result.WriteRune(unicode.ToLower(v))
+		case unicode.IsSpace(v) || v == '-':
+			if len > i+1 && runeString[i+1] != '-' && !unicode.IsSpace(runeString[i+1]) && runeString[i+1] != 'ъ' && runeString[i+1] != 'ь'  && runeString[i+1] != 'Ъ' && runeString[i+1] != 'Ь' {
+				result.WriteString("-")
+			}
 		default:
 			result.WriteString(char)
 		}
