@@ -91,7 +91,7 @@ func URL(o string) string {
 			}
 
 			result.WriteString("-")
-		case v == 'A' || v == 'B' || v == 'C' || v == 'D' || v == 'E' || v == 'F' || v == 'G' || v == 'H' || v == 'I' || v == 'J' || v == 'K' || v == 'L' || v == 'M' || v == 'N' || v == 'O' || v == 'P' || v == 'Q' || v == 'R' || v == 'S' || v == 'T' || v == 'U' || v == 'V' || v == 'W' || v == 'X' || v == 'Y' || v == 'Z' || v == 'a' || v == 'b' || v == 'c' || v == 'd' || v == 'e' || v == 'f' || v == 'g' || v == 'h' || v == 'i' || v == 'j' || v == 'k' || v == 'l' || v == 'm' || v == 'n' || v == 'o' || v == 'p' || v == 'q' || v == 'r' || v == 's' || v == 't' || v == 'u' || v == 'v' || v == 'w' || v == 'x' || v == 'y' || v == 'z':
+		case 'a' <= v && v <= 'z' || 'A' <= v && v <= 'Z':
 			result.WriteRune(unicode.ToLower(v))
 		default:
 			result.WriteString(char)
